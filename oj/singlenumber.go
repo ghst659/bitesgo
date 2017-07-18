@@ -12,8 +12,8 @@ func singleNumber(nums []int) int {
 	for _, k := range nums {
 		record[k] = !record[k]
 	}
-	for k, _ := range record {
-		if record[k] {
+	for k, odd := range record {
+		if odd {
 			result = k
 			break
 		}
