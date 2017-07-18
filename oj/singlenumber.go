@@ -8,16 +8,15 @@ package oj
 
 func singleNumber(nums []int) int {
 	var result int
-	record := make(map[int]int)
+	record := make(map[int]bool)
 	for _, k := range nums {
-		if _, seen := record[k]; seen {
-			delete(record, k)
-		} else {
-			record[k] = 1
-		}
+		record[k] = !record[k]
 	}
-	for result, _ = range record {
-		break
+	for k, _ := range record {
+		if record[k] {
+			result = k
+			break
+		}
 	}
 	return result
 }
